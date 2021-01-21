@@ -12,18 +12,9 @@ jobs:
         with:
             submodules: 'recursive'
       - name: Measure sizes
-        uses: FreeRTOS/CI-CD-Github-Actions/memory_statistics@main
+        uses: archigup/CI-CD-Github-Actions/memory_statistics@memory_estimator2
         with:
-          lib_name: coreHTTP
-          src: |
-            source/core_http_client.c
-            source/dependency/3rdparty/http_parser/http_parser.c
-          include: |
-            source/include
-            source/interface
-            source/dependency/3rdparty/http_parser
-          compiler_flags: |
-            HTTP_DO_NOT_USE_CUSTOM_CONFIG
+            config: .github/memory_statistics_config.json
       - name: Upload table
         uses: actions/upload-artifact@v2
         with:
